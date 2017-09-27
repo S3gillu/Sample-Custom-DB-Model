@@ -1,0 +1,121 @@
+﻿@model SampleCustomDBModel.Models.Student
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+          integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <meta name="viewport" content="width=device-width" />
+    <title>  Create </title>
+    <style>
+        .icon1{font-size:28px;}
+        .header{font-size:60px;color:royalblue;background:lightblue;margin-top:20px; outline:dashed;margin-left:50px;
+                margin-right:50px;text-align: center;padding-top:15px;text-decoration:inherit;}
+        .s6{margin-left:400px; font-size:20px;outline:solid;margin-right:518px;outline-color:black;}
+       .form-horizontal{margin-left:250px;}
+    
+    </style>
+    <script>
+        function Mfunc() { alert("Your Records Submitted succesfully");}
+    </script>
+</head>
+<body>
+    <script src="~/Scripts/jquery-1.10.2.min.js"></script>
+    <script src="~/Scripts/jquery.validate.min.js"></script>
+    <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+    
+    <div class="header">
+        <h4> <strong>Student Registration</strong></h4>
+        <hr />
+    </div>
+    @using (Html.BeginForm()) 
+    {
+        @Html.AntiForgeryToken()
+        
+        <div class="form-horizontal">
+           
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.Name, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10" style="width:300px">
+                    @Html.EditorFor(model => model.Name, new { htmlAttributes = new {placeholder="Your name", @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.Age, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10" style="width:300px">
+                    @Html.EditorFor(model => model.Age, new { htmlAttributes = new { placeholder = "Your age", @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Age, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.EmailId, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10" style="width:300px">
+                   <span class="icon1"><i class="fa fa-envelope" aria-hidden="true"></i></span>
+                  
+                   
+                    <div class="icon" style="display:inline-block; width:237px;" >
+                        
+                    @Html.EditorFor(model => model.EmailId, new { htmlAttributes = new { placeholder = "Email", @class = "form-control" } })
+                     </div>
+
+                    @Html.ValidationMessageFor(model => model.EmailId, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.Qualification, htmlAttributes: new {  @class = "control-label col-md-2" })
+                <div class="col-md-10" style="width:300px">
+                    @Html.RadioButtonFor(model=>model.Qualification,"B.E", new { id ="shu"})
+                    @Html.Label("shu", "B.E") &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+                    @Html.RadioButtonFor(model => model.Qualification,"MCA", new  {  id = "shu1" })
+                    @Html.Label("shu1", "MCA") <br>
+                    @Html.RadioButtonFor(model => model.Qualification,"B.Tech", new { id = "shu2" })
+                    @Html.Label("shu2", "B.Tech")  &nbsp; &nbsp;
+                    @Html.RadioButtonFor(model => model.Qualification,"PhD", new { id = "shu3" })
+                    @Html.Label("shu3", "PhD")
+
+              @*    @Html.EditorFor(model => model.Qualification, new { htmlAttributes = new { @class = "form-control" } })*@
+                   @Html.ValidationMessageFor(model => model.Qualification, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(model => model.MaritalStatus, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10" style="width:300px">
+                  @Html.RadioButtonFor(model => model.MaritalStatus, "Married", new { id = "first"})
+                    @Html.Label("first","Married") &nbsp;
+                    @Html.RadioButtonFor(model => model.MaritalStatus, "Un-Married", new { id = "second" })
+                    @Html.Label("second", "Un-Married")
+                    @Html.ValidationMessageFor(model => model.MaritalStatus, "",new { @class = "text-danger" })
+                    </div>
+                </div>
+
+
+
+                <div class="form-group">
+                    <div class="col-md-offset-2 col-md-10">
+                        <input type="Reset" value=" Reset  " class="btn btn-danger" /> &nbsp;
+                        <input type="submit" value=" Save Details " class="btn btn-success" onclick="Mfunc();" />
+                      
+                    </div>
+                </div>
+            </div>
+           
+        }
+
+        <div class="s6">
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+   
+    </body>
+    </html>

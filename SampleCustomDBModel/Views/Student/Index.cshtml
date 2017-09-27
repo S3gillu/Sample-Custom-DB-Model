@@ -1,0 +1,74 @@
+﻿@model IEnumerable<SampleCustomDBModel.Models.Student>
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+
+<head>
+   
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" 
+          integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <meta name="viewport" content="width=device-width" />
+    <style>
+        tr:nth-of-type(odd)  {
+                                background-color:lightgrey;
+                             }
+
+        .table th {background:grey; }
+        .add{margin-left:800px;outline-style:auto;margin-right:50px;text-align:center;background:lightblue;color:white;}
+        body{margin-top:18px;}
+        .header{color:royalblue;margin-top:10px; outline:dashed;margin-left:10px;margin-right:10px;text-align: center;padding-top:15px;text-decoration:inherit;padding-bottom:20px;background:lightblue;}
+    </style>
+    <title>Index</title>
+</head>
+<body class=" container ">
+    <div class="header">
+        <h4> <strong>Details Of All The Student</strong></h4>
+      
+    </div>
+ 
+    <hr style="border: 1px dashed black;" />
+    <div> 
+        <table class="table table-bordered">
+           
+                <tr>
+                    @*  <th>Id</th>*@
+                    <th><strong>&#9660;Name</strong></th>
+                    <th><strong>&#9660;Age</strong></th>
+                    <th><strong>&#9660;Qualification</strong></th>
+                    <th><strong>&#9660;EmailId</strong></th>
+            </tr>
+
+
+            @foreach (var item in Model)
+            {
+                
+                    <tr>
+                        @* <td>@Html.DisplayFor(modelItem => item.Id)</td>*@
+                        <td>@Html.DisplayFor(modelItem => item.Name)</td>
+                        <td>@Html.DisplayFor(modelItem => item.Age)</td>
+                        <td>@Html.DisplayFor(modelItem => item.Qualification)</td>
+                        <td>@Html.DisplayFor(modelItem => item.EmailId)</td>
+                    </tr>
+                
+            }
+
+
+        </table>
+    </div>
+  @*  <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <form action="Create" style="margin-left:600px">
+                <input type="submit" value="Add Student" class="btn btn-info"/>
+            </form>
+        </div>
+    </div>*@
+    <div class="add">
+        <p> <strong>@Html.ActionLink("Add Student", "create")</strong></p>
+    </div>
+
+</body>
+</html>
